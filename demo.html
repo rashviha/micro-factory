@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Machines & Orders - MicroFactory</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .tab {
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      background: #1a1a1a;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: 0.3s;
+    }
+    .tab.active {
+      background: #00b140;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .filters {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .filters input,
+    .filters select {
+      padding: 0.6rem;
+      border-radius: 5px;
+      border: none;
+      background: #111;
+      color: white;
+      flex: 1 1 200px;
+    }
+
+    .machine-card,
+    .order-card {
+      background: #1a1a1a;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+
+    .machine-card h2,
+    .order-card h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .machine-card p,
+    .order-card p {
+      margin: 0.25rem 0;
+      color: #ccc;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.6rem 1rem;
+      background-color: #00b140;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .status {
+      font-weight: bold;
+      color: #00b140;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Booking Modal */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .modal-content {
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+    }
+    .modal-content input {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      border: none;
+      background: #111;
+      color: #fff;
+    }
+    .close-btn {
+      background: #333;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Tabs -->
+    <div class="tabs">
+      <div class="tab active" id="machinesTab">Machines</div>
+      <div class="tab" id="ordersTab">Orders</div>
+    </div>
+
+    <!-- Machines View -->
+    <div id="machinesView">
+      <h1>Browse Machines</h1>
+      <div class="filters">
+        <input type="text" id="search" placeholder="Search machines...">
+        <select>
+          <option value="all">All Types</option>
+          <option value="laser">Laser Cutters</option>
+          <option value="cnc">CNC Machines</option>
+          <option value="3d">3D Printers</option>
+        </select>
+        <select>
+          <option value="all">All Locations</option>
+          <option value="coimbatore">Coimbatore</option>
+          <option value="bangalore">Bangalore</option>
+          <option value="chennai">Chennai</option>
+          <option value="mumbai">Mumbai</option>
+        </select>
+      </div>
+
+      <!-- Sample Machine Cards (add more as needed) -->
+      <div class="machine-card machine">
+        <h2>3D Printer Z9</h2>
+        <p>₹400/hr | Coimbatore | Available</p>
+        <p>Material: PLA, ABS</p>
+        <button class="btn book-btn" data-machine="3D Printer Z9">Book Now</button>
+      </div>
+
+      <!-- Add more machine cards here... -->
+    </div>
+
+    <!-- Orders View -->
+    <div id="ordersView" class="hidden">
+      <h1>My Orders</h1>
+      <div class="order-card">
+        <h2>3D Printer Z9</h2>
+        <p>Booked on: 25 July 2025</p>
+        <p>Status: <span class="status">In Progress</span></p>
+        <p>Duration: 3 hours</p>
+        <button class="btn">Rate Provider</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal hidden" id="bookingModal">
+    <div class="modal-content">
+      <h2 id="modalTitle">Book Machine</h2>
+      <input type="date" id="bookingDate" />
+      <input type="number" id="bookingHours" placeholder="Hours" min="1" />
+      <button class="btn" id="submitBtn">Submit</button>
+      <button class="btn close-btn" id="cancelBtn">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    // Tab Logic
+    const machinesTab = document.getElementById('machinesTab');
+    const ordersTab = document.getElementById('ordersTab');
+    const machinesView = document.getElementById('machinesView');
+    const ordersView = document.getElementById('ordersView');
+
+    machinesTab.onclick = () => {
+      machinesTab.classList.add('active');
+      ordersTab.classList.remove('active');
+      machinesView.classList.remove('hidden');
+      ordersView.classList.add('hidden');
+    };
+
+    ordersTab.onclick = () => {
+      ordersTab.classList.add('active');
+      machinesTab.classList.remove('active');
+      ordersView.classList.remove('hidden');
+      machinesView.classList.add('hidden');
+    };
+
+    // Search
+    const searchInput = document.getElementById('search');
+    const machineCards = document.querySelectorAll('.machine');
+
+    searchInput.addEventListener('input', () => {
+      const term = searchInput.value.toLowerCase();
+      machineCards.forEach(machine => {
+        const text = machine.innerText.toLowerCase();
+        machine.style.display = text.includes(term) ? 'block' : 'none';
+      });
+    });
+
+    // Booking Modal
+    const modal = document.getElementById('bookingModal');
+    const modalTitle = document.getElementById('modalTitle');
+    let selectedMachine = "";
+
+    document.querySelectorAll('.book-btn').forEach(btn => {
+      btn.onclick = () => {
+        selectedMachine = btn.dataset.machine;
+        modalTitle.textContent = `Book ${selectedMachine}`;
+        modal.classList.remove('hidden');
+      };
+    });
+
+
+
+    // Attach event listeners after DOM is ready
+document.getElementById('cancelBtn').addEventListener('click', function() {
+  modal.classList.add('hidden');
+  // Switch to Machines tab/view
+  machinesTab.classList.add('active');
+  ordersTab.classList.remove('active');
+  machinesView.classList.remove('hidden');
+  ordersView.classList.add('hidden');
+});
+    document.getElementById('submitBtn').addEventListener('click', submitBooking);
+
+    function submitBooking() {
+      const date = document.getElementById('bookingDate').value;
+      const hours = document.getElementById('bookingHours').value;
+      if (!date || !hours) {
+        alert('Please fill in all fields!');
+        return;
+      }
+      alert(`Booking confirmed for ${selectedMachine} on ${date} for ${hours} hour(s)!`);
+      modal.classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
+
