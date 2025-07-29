@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home - MicroFactory</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #0f0f0f;
+      color: #fff;
+    }
+    .header {
+      background: #181818;
+      text-align: center;
+      padding: 1.5rem;
+      border-bottom: 2px solid #00b140;
+    }
+    .header-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #00b140;
+      margin-bottom: 0.5rem;
+    }
+    .navbar {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .nav-link {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      background: #00b140;
+      color: #000;
+    }
+     .profile-bar {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .profile-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      background: #1a1a1a;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s;
+    }
+    .profile-link:hover {
+      background: #00b140;
+      color: #000;
+    }
+    .profile-icon {
+      font-size: 1.2rem;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #00b140;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #ccc;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .hero .cta {
+      margin-top: 2rem;
+    }
+    .cta a {
+      background: #00b140;
+      color: #000;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .section h2 {
+      font-size: 2rem;
+      color: #00b140;
+      margin-bottom: 1rem;
+    }
+    .section p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .feature-box {
+      background: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 10px;
+      border-left: 4px solid #00b140;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+    .feature-box h3 {
+      color: #00b140;
+      margin-bottom: 0.5rem;
+    }
+    .feature-box p {
+      color: #bbb;
+    }
+
+    .footer {
+      background: #181818;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-top: 3rem;
+      border-top: 1px solid #2a2a2a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-title">MICRO FACTORY</div>
+    <nav class="navbar">
+      <a href="./index.html" class="nav-link active">Home</a>
+      <a href="./machines.html" class="nav-link">Machines</a>
+      <a href="./orders.html" class="nav-link">Orders</a>
+      <a href="./about.html" class="nav-link">About</a>
+      <a href="./contact.html" class="nav-link">Contact</a>
+    </nav>
+  </div>
+<div class="profile-bar">
+    <a href="./profile.html" class="profile-link" title="Profile">
+      <span class="profile-icon">👤</span> Profile
+    </a>
+  </div>
+  <section class="hero">
+    <h1>Next-Gen Manufacturing at Your Fingertips</h1>
+    <p>Book machine time, upload designs, and watch your product come to life — all in one smart platform built for creators, designers, and makers.</p>
+    <div class="cta">
+      <a href="./machines.html">Explore Machines</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>What is MicroFactory?</h2>
+    <p>
+      MicroFactory is your digital gateway to a network of micro-manufacturing units and cutting-edge production machines. Whether you're prototyping your dream gadget, mass-producing small batches, or testing new materials — MicroFactory makes it happen.
+    </p>
+
+    <div class="features">
+      <div class="feature-box">
+        <h3>⏱ Real-Time Booking</h3>
+        <p>See availability and reserve machine time instantly — no calls, no emails.</p>
+      </div>
+      <div class="feature-box">
+        <h3>📁 File Uploads</h3>
+        <p>Submit your 3D models, laser files, and print-ready designs right on the spot.</p>
+      </div>
+      <div class="feature-box">
+        <h3>🔍 Track Progress</h3>
+        <p>Get real-time updates on production stages and completion estimates.</p>
+      </div>
+      <div class="feature-box">
+        <h3>⭐ Provider Ratings</h3>
+        <p>Rate and review machine providers to help others choose the best fit.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Who Is It For?</h2>
+    <p>
+      Whether you're a solo designer, an engineering student, a small business, or a manufacturing wizard — MicroFactory is designed to streamline the making process. Forget the hustle of finding workshops. Start building, faster.
+    </p>
+  </section>
+
+  <div class="footer">
+    © 2025 MicroFactory. All rights reserved.
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Orders - MicroFactory</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      padding: 2rem;
+    }
+    .header {
+      background: #181818;
+      padding: 1.2rem 2rem 1rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      margin: -2rem -2rem 2rem -2rem;
+      border-bottom: 2px solid #00b140;
+      align-items: center;
+      text-align: center;
+    }
+    .header-title {
+      font-size: 2.2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #00b140;
+      margin-bottom: 0.5rem;
+    }
+    .navbar {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+    }
+    .nav-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 5px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      background: #00b140;
+      color: #000;
+    }
+    .profile-bar {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .profile-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      background: #1a1a1a;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s;
+    }
+    .profile-link:hover {
+      background: #00b140;
+      color: #000;
+    }
+    .profile-icon {
+      font-size: 1.2rem;
+    }
+
+    h1 {
+      color: #00b140;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #1a1a1a;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 14px 18px;
+      text-align: left;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    th {
+      background: #111;
+      color: #00b140;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 0.05rem;
+    }
+
+    td {
+      color: #ddd;
+    }
+
+    tr:hover {
+      background: #222;
+    }
+
+    .status {
+      padding: 5px 12px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .pending {
+      background-color: #ff9800;
+    }
+
+    .shipped {
+      background-color: #2196f3;
+    }
+
+    .delivered {
+      background-color: #4caf50;
+    }
+
+    .cancelled {
+      background-color: #f44336;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-title">MICRO FACTORY</div>
+    <nav class="navbar">
+      <a href="./home.html" class="nav-link">Home</a>
+      <a href="./machines.html" class="nav-link">Machines</a>
+      <a href="./orders.html" class="nav-link active">Orders</a>
+      <a href="./about.html" class="nav-link">About</a>
+      <a href="./contact.html" class="nav-link">Contact</a>
+    </nav>
+  </div>
+
+  <div class="profile-bar">
+    <a href="./profile.html" class="profile-link" title="Profile">
+      <span class="profile-icon">👤</span> Profile
+    </a>
+  </div>
+
+  <h1>Your Orders</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Order #</th>
+        <th>Date</th>
+        <th>Customer</th>
+        <th>Machine</th>
+        <th>Total</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1001</td>
+        <td>2024-06-01</td>
+        <td>Jane Doe</td>
+        <td>Lathe X200</td>
+        <td>₹9,960</td>
+        <td><span class="status pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>1002</td>
+        <td>2024-06-02</td>
+        <td>John Smith</td>
+        <td>Milling Pro 5</td>
+        <td>₹7,088</td>
+        <td><span class="status shipped">Shipped</span></td>
+      </tr>
+      <tr>
+        <td>1003</td>
+        <td>2024-06-03</td>
+        <td>Emily Clark</td>
+        <td>DrillMaster 3000</td>
+        <td>₹19,140</td>
+        <td><span class="status delivered">Delivered</span></td>
+      </tr>
+      <tr>
+        <td>1004</td>
+        <td>2024-06-04</td>
+        <td>Michael Lee</td>
+        <td>PressPro S1</td>
+        <td>₹3,745</td>
+        <td><span class="status cancelled">Cancelled</span></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Machines & Orders - MicroFactory</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      padding: 2rem;
+    }
+    .header {
+      background: #181818;
+      padding: 1.2rem 2rem 1rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      margin: -2rem -2rem 2rem -2rem;
+      border-bottom: 2px solid #00b140;
+    }
+    .header-title {
+      font-size: 2.2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #00b140;
+      margin-bottom: 0.5rem;
+    }
+    .navbar {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .nav-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 5px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      background: #00b140;
+      color: #000;
+    }
+    
+    
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .profile-bar {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .profile-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      background: #1a1a1a;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s;
+    }
+    .profile-link:hover {
+      background: #00b140;
+      color: #000;
+    }
+    .profile-icon {
+      font-size: 1.2rem;
+    }
+    .tab {
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      background: #1a1a1a;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: 0.3s;
+    }
+    .tab.active {
+      background: #00b140;
+      color: #000;
+      font-weight: bold;
+    }
+    .filters {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .filters input,
+    .filters select {
+      padding: 0.6rem;
+      border-radius: 5px;
+      border: none;
+      background: #111;
+      color: white;
+      flex: 1 1 200px;
+    }
+    .machine-card,
+    .order-card {
+      background: #1a1a1a;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+    .machine-card h2,
+    .order-card h2 {
+      margin-bottom: 0.5rem;
+    }
+    .machine-card p,
+    .order-card p {
+      margin: 0.25rem 0;
+      color: #ccc;
+    }
+    .buttonn{
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.6rem 1rem;
+      background-color: #00b140;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.6rem 1rem;
+      background-color: #00b140;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .header {
+      align-items: center;
+      text-align: center;
+    }
+    .navbar {
+      justify-content: center;
+    }
+    .status {
+      font-weight: bold;
+      color: #00b140;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-title">MICRO FACTORY</div>
+    <nav class="navbar">
+      <a href="./home.html" class="nav-link">Home</a>
+      <a href="./machines.html" class="nav-link active">Machines</a>
+      <a href="./orders.html" class="nav-link">Orders</a>
+      <a href="./about.html" class="nav-link">About</a>
+      <a href="./contact.html" class="nav-link">Contact</a>
+    </nav>
+  </div>
+  <div class="profile-bar">
+    <a href="./profile.html" class="profile-link" title="Profile">
+      <span class="profile-icon">👤</span> Profile
+    </a>
+  </div>
+
+    <!-- Machines View -->
+    <div id="machinesView">
+      <h1>Browse Machines</h1>
+      <div class="filters">
+        <input type="text" id="search" placeholder="Search machines...">
+        <select>
+          <option value="all">All Types</option>
+          <option value="laser">Laser Cutters</option>
+          <option value="cnc">CNC Machines</option>
+          <option value="3d">3D Printers</option>
+        </select>
+        <select>
+          <option value="all">All Locations</option>
+          <option value="coimbatore">Coimbatore</option>
+          <option value="bangalore">Bangalore</option>
+          <option value="chennai">Chennai</option>
+          <option value="mumbai">Mumbai</option>
+        </select>
+      </div>
+
+      <div class="machine-card machine">
+        <h2>3D Printer Z9</h2>
+        <p>₹400/hr | Coimbatore | Available</p>
+        <p>Material: PLA, ABS</p>
+        <a class="buttonn" href="demo.html">Book Now</a>
+      </div>
+
+      <div class="machine-card machine">
+        <h2>Laser Cutter A1</h2>
+        <p>₹250/hr | Bangalore | Available</p>
+        <p>Material: Acrylic, MDF</p>
+        <a class="buttonn" href="demo.html">Book Now</a>
+      </div>
+
+      <div class="machine-card machine">
+        <h2>CNC Milling MX300</h2>
+        <p>₹500/hr | Chennai | Available</p>
+        <p>Material: Aluminum, Brass</p>
+        <a class="buttonn" href="demo.html">Book Now</a>
+      </div>
+
+      <div class="machine-card machine">
+        <h2>Resin 3D Printer R11</h2>
+        <p>₹600/hr | Mumbai | Limited Availability</p>
+        <p>Material: Resin (SLA)</p>
+        <a class="buttonn" href="demo.html">Book Now</a>
+      </div>
+
+      <div class="machine-card machine">
+        <h2>Fiber Laser Marking Machine</h2>
+        <p>₹350/hr | Coimbatore | Available</p>
+        <p>Material: Metal engraving</p>
+        <a class="buttonn" href="demo.html">Book Now</a>
+      </div>
+
+      <div class="machine-card machine">
+        <h2>Multi-Material FDM Printer</h2>
+        <p>₹450/hr | Bangalore | Available</p>
+        <p>Material: PLA, TPU, Nylon</p>
+        <a class="buttonn" href="demo.html">Book Now</a>
+      </div>
+    </div>
+
+    
+  <script>
+    // Tabs
+    const machinesTab = document.getElementById('machinesTab');
+    const ordersTab = document.getElementById('ordersTab');
+    const machinesView = document.getElementById('machinesView');
+    const ordersView = document.getElementById('ordersView');
+
+    machinesTab.addEventListener('click', () => {
+      machinesTab.classList.add('active');
+      ordersTab.classList.remove('active');
+      machinesView.classList.remove('hidden');
+      ordersView.classList.add('hidden');
+    });
+
+    ordersTab.addEventListener('click', () => {
+      ordersTab.classList.add('active');
+      machinesTab.classList.remove('active');
+      ordersView.classList.remove('hidden');
+      machinesView.classList.add('hidden');
+    });
+
+    // Search
+    const searchInput = document.getElementById('search');
+    const machineCards = document.querySelectorAll('.machine');
+
+    searchInput.addEventListener('input', () => {
+      const term = searchInput.value.toLowerCase();
+      machineCards.forEach(machine => {
+        const text = machine.innerText.toLowerCase();
+        machine.style.display = text.includes(term) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
